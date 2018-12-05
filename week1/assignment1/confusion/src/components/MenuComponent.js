@@ -9,6 +9,8 @@ import {
   CardTitle
 } from "reactstrap";
 
+import DishDetail from "./DishdetailComponent";
+
 class Menu extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ class Menu extends Component {
   renderDish(dish) {
     if (dish != null)
       return (
-        <Card>
+        <Card className="text-left">
           <CardImg top src={dish.image} alt={dish.name} />
           <CardBody>
             <CardTitle>{dish.name}</CardTitle>
@@ -57,11 +59,20 @@ class Menu extends Component {
     return (
       <div className="container">
         <div className="row">{menu}</div>
-        <div className="row">
+        {/* <div className="row">
           <div className="col-12 col-md-5 m-1">
             {this.renderDish(this.state.selectedDish)}
           </div>
-        </div>
+        </div> */}
+
+        <DishDetail
+          dish={this.state.selectedDish}
+          comments={
+            this.state.selectedDish != null
+              ? this.state.selectedDish.comments
+              : null
+          }
+        />
       </div>
     );
   }
