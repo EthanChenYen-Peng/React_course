@@ -10,7 +10,7 @@ import { LEADERS } from "../shared/leaders";
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import Contact from "./ContactComponent";
-
+import About from "./AboutComponent";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -54,9 +54,16 @@ class Main extends Component {
         />
       );
     };
+
+    const AboutPage = () => {
+      console.log(this.state.leaders);
+      return <About leaders={this.state.leaders} />;
+    };
+
     return (
       <div>
         <Header />
+
         <Switch>
           <Route path="/home" component={HomePage} />
           <Route
@@ -65,7 +72,9 @@ class Main extends Component {
             component={() => <Menu dishes={this.state.dishes} />}
           />
           <Route path="/menu/:dishId" component={this.DishWithId} />
-          <Route exact path="/contactus" component={Contact} />} />
+          <Route exact path="/contactus" component={Contact} />
+          <Route path="/aboutus" component={AboutPage} />
+
           {/* Default route */}
           <Redirect to="/home" />
         </Switch>

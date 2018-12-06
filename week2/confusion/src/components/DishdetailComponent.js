@@ -38,7 +38,7 @@ function RenderComments({ comments }) {
     return <div />;
   }
 }
-function RenderDish(dish) {
+function RenderDish({ dish }) {
   if (dish != null)
     return (
       <Card className="text-left">
@@ -68,6 +68,7 @@ const DishDetail = props => {
         </div>
       </div>
       <div className="row">
+        {/* passing an object */}
         <div className="col-12 col-md-5 m-1">
           <RenderDish dish={props.dish} />
         </div>
